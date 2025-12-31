@@ -7,7 +7,9 @@ import ProductTable from "./components/ProductTable";
 import MonthOnMonthTable from "./components/MonthOnMonthTable";
 import SalesChart from "./components/SalesChart";
 import ReturnsChart from "./components/ReturnsChart";
+import Navbar from "./components/Navbar";
 import "./App.css";
+import KpiCard from "./components/KpiCard";
 
 function App() {
   const [data, setData] = useState([]);
@@ -80,7 +82,7 @@ function App() {
         console.log('Store data:', storeRes.data);
         console.log('Shop type data:', shopTypeRes.data);
         console.log('Month-on-Month data:', momRes.data);
-        
+
         setData(storeRes.data);
         setShopTypeData(shopTypeRes.data);
         setMonthOnMonthData(momRes.data);
@@ -119,118 +121,95 @@ function App() {
   const totalBills = data.reduce((sum, row) => sum + (row.total_bills || 0), 0);
   const totalQty = data.reduce((sum, row) => sum + (row.total_qty || 0), 0);
   const lastYearRevenue = data.reduce((sum, row) => sum + (row.last_year_sales || 0), 0);
-  const avgGrowth = lastYearRevenue > 0 
+  const avgGrowth = lastYearRevenue > 0
     ? ((totalRevenue - lastYearRevenue) / lastYearRevenue * 100).toFixed(1)
     : 0;
-  
+
   const onlineSales = data.reduce((sum, row) => sum + (row.online_sales_amount || 0), 0);
   const offlineSales = data.reduce((sum, row) => sum + (row.offline_sales_amount || 0), 0);
-  const onlinePercentage = totalRevenue > 0 
+  const onlinePercentage = totalRevenue > 0
     ? ((onlineSales / totalRevenue) * 100).toFixed(1)
     : 0;
 
   return (
-    <div className="dashboard-container">
-      <div className="dashboard-header">
-        <h1>Daily Market-Wise Intelligence</h1>
-        <p className="dashboard-subtitle">
-          {new Date(filters.fromDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })} - {new Date(filters.toDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
-          {loading && <span style={{ marginLeft: '10px', color: '#ff7300' }}>⏳ Loading...</span>}
-        </p>
-      </div>
+    <>
+      <Navbar />
+      <div className="dashboard-container p-7">
+        <div className="dashboard-header">
+          <h1>Daily Market-Wise Intelligence</h1>
+          <p className="dashboard-subtitle">
+            {new Date(filters.fromDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })} - {new Date(filters.toDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+            {loading && <span style={{ marginLeft: '10px', color: '#ff7300' }}>⏳ Loading...</span>}
+          </p>
+        </div>
 
-      <Filters 
-        filters={filters} 
-        setFilters={setFilters} 
-        stores={stores} 
-        TranTypes={TransType} 
-        ShopType={ShopType} 
-      />
+        <Filters
+          filters={filters}
+          setFilters={setFilters}
+          stores={stores}
+          TranTypes={TransType}
+          ShopType={ShopType}
+        />
 
-      {/* KPI Cards */}
-      <div className="kpi-grid">
-        <div className="kpi-card">
-          <div className="kpi-label">Revenue</div>
-          <div className="kpi-value">₹{(totalRevenue / 10000000).toFixed(1)} Cr</div>
-          <div className={`kpi-change ${avgGrowth >= 0 ? 'positive' : 'negative'}`}>
-            {avgGrowth >= 0 ? '↗' : '↘'} {Math.abs(avgGrowth)}%
+        {/* KPI Cards */}
+        <div className="kpi-grid">
+          <KpiCard label="Bill Count" value={`${(totalBills / 1000).toFixed(1)} K`} change={0} />
+          <KpiCard label="Revenue" value={`₹${(totalRevenue / 10000000).toFixed(1)} Cr`} change={avgGrowth} />
+          <KpiCard label="Online Mix" value={`${onlinePercentage}%`} change={0} />
+          <KpiCard label="Total Quantity" value={`${(totalQty / 1000).toFixed(1)} K`} change={0} />
+
+        </div>
+
+        {/* Charts */}
+        <div className="charts-grid">
+          <div className="section-card">
+            <div className="section-header">Revenue by Store</div>
+            <SalesChart
+              data={data}
+              selectedStore={filters.store}
+              onStoreClick={handleStoreClick}
+            />
+          </div>
+
+          <div className="section-card">
+            <div className="section-header">Online vs Offline Sales</div>
+            <ReturnsChart data={data} />
           </div>
         </div>
 
-        <div className="kpi-card">
-          <div className="kpi-label">Bill Count</div>
-          <div className="kpi-value">{(totalBills / 1000).toFixed(1)} K</div>
-          <div className="kpi-change positive">
-            ↗ {data.length} stores
-          </div>
-        </div>
-
-        <div className="kpi-card">
-          <div className="kpi-label">Online Mix</div>
-          <div className="kpi-value">{onlinePercentage}%</div>
-          <div className="kpi-change positive">
-            ₹{(onlineSales / 10000000).toFixed(1)} Cr online
-          </div>
-        </div>
-
-        <div className="kpi-card">
-          <div className="kpi-label">Total Quantity</div>
-          <div className="kpi-value">{(totalQty / 1000).toFixed(1)} K</div>
-          <div className="kpi-change positive">
-            Units sold
-          </div>
-        </div>
-      </div>
-
-      {/* Charts */}
-      <div className="charts-grid">
+        {/* Store Performance Table */}
         <div className="section-card">
-          <div className="section-header">Revenue by Store</div>
-          <SalesChart 
-            data={data} 
+          <div className="section-header">Market Performance</div>
+          <StoreTable
+            data={data}
             selectedStore={filters.store}
-            onStoreClick={handleStoreClick}
+            onRowClick={handleTableRowClick}
           />
         </div>
 
+        {/* Shop Type Performance Table */}
         <div className="section-card">
-          <div className="section-header">Online vs Offline Sales</div>
-          <ReturnsChart data={data} />
+          <div className="section-header">Shop Type Performance</div>
+          <ShopTypeTable
+            data={shopTypeData}
+            selectedShopType={filters.ShopType}
+            onRowClick={handleShopTypeClick}
+          />
         </div>
-      </div>
 
-      {/* Store Performance Table */}
-      <div className="section-card">
-        <div className="section-header">Market Performance</div>
-        <StoreTable 
-          data={data} 
-          selectedStore={filters.store}
-          onRowClick={handleTableRowClick}
-        />
-      </div>
+        {/* Online/Offline Breakdown */}
+        <div className="section-card">
+          <div className="section-header">Channel Mix by Store</div>
+          <ProductTable data={data} />
+        </div>
 
-      {/* Shop Type Performance Table */}
-      <div className="section-card">
-        <div className="section-header">Shop Type Performance</div>
-        <ShopTypeTable 
-          data={shopTypeData} 
-          selectedShopType={filters.ShopType}
-          onRowClick={handleShopTypeClick}
-        />
-      </div>
-
-      {/* Online/Offline Breakdown */}
-      <div className="section-card">
-        <div className="section-header">Channel Mix by Store</div>
-        <ProductTable data={data} />
-      </div>
-
-      {/* Month-on-Month Analysis */}
-      <div className="section-card">
-        <div className="section-header">Month-on-Month Performance</div>
-        <MonthOnMonthTable data={monthOnMonthData} />
-      </div>
-    </div>
+        {/* Month-on-Month Analysis */}
+        <div className="section-card">
+          <div className="section-header">Month-on-Month Performance</div>
+          <MonthOnMonthTable data={monthOnMonthData} />
+        </div>
+      </div >
+    </>
   );
 }
 

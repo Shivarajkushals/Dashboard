@@ -116,7 +116,7 @@ WSGI_APPLICATION = 'dashboard_project.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        'ENGINE': 'mysql.connector.django',
         "NAME": "kushal-prod-db",
         "USER": "KushalsAdmin",
         "PASSWORD": "PdXA5Uvpg4DUAr4U",
