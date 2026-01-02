@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import logo from "./assets/logo.svg";
 // import hamburger from "./assets/hamburger.svg";
 
@@ -16,23 +15,18 @@ export default function Navbar() {
             </button>
             <div className="flex gap-4 text-center py-4 bg-[rgba(255,255,255,0.2)]">
                 {navList.map((item, i) => (
-                    // <Link
-                    //     key={i}
-                    //     to={item === "About Us" ? "/About" : "/"}
-                    //     onClick={() => setMenuOpen(false)} // close menu on click
-                    //     className={`py-2 navItem manrope ${(item === "Home" && currentPath === "/") ||
-                    //         (item === "About Us" && currentPath === "/About")
-                    //         ? "activeNav"
-                    //         : ""
-                    //         }`}
-                    // >
-                    //     {item}
-                    // </Link>
-                    <span key={i} className="py-2">{item}</span>
+                    <Link
+                        key={i}
+                        to={item === "Tabels" ? "/Home" : "/"}
+                        onClick={() => setMenuOpen(false)} // close menu on click
+                    >
+                        {item}
+                    </Link>
                 ))}
 
 
             </div>
+
         </nav >
     );
 }

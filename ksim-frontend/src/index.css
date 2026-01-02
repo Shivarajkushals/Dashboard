@@ -1,8 +1,6 @@
 /* App.css - Modern Dashboard Styling */
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
@@ -23,7 +21,7 @@ body {
   margin-bottom: 30px;
 }
 
-.dashboard-header h1 {
+.dashboard-header span {
   font-size: 32px;
   font-weight: 700;
   color: #1a1a1a;
@@ -42,7 +40,6 @@ body {
   padding: 20px 25px;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  margin-bottom: 25px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 15px;
@@ -50,10 +47,11 @@ body {
 }
 
 .filter-group {
-  display: flex;
+  display: grid;
   flex-direction: column;
   gap: 6px;
   min-width: 150px;
+  grid-column: span 1;
 }
 
 .filter-label {
