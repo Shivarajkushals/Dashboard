@@ -178,7 +178,7 @@ const Filters = ({ filters, setFilters, stores = [], TranTypes = [], ShopType = 
         {/* Hint text */}
       </div>
       <div className="flex justify-end">
-        <div className={`text-[#ff7300] text-xs py-3 ${hasChanges ? 'visible' : 'invisible'}`}>
+        <div className={`text-[#ff7300] text-xs pt-2 ${hasChanges ? 'visible' : 'invisible'}`}>
           💡 You have unsaved filter changes. Click "Apply Filters" to update.
         </div>
       </div>

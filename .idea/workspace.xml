@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e16cc9e3-ad63-489f-9be5-af17ac17b142" name="Changes" comment="">
+    <list default="true" id="e16cc9e3-ad63-489f-9be5-af17ac17b142" name="Changes" comment="added router to navigate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ksim-frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ksim-frontend/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ksim-frontend/src/components/Filters.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ksim-frontend/src/components/Filters.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ksim-frontend/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/ksim-frontend/src/components/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ksim-frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/ksim-frontend/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,17 +38,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/TECHNOBOOST_PROJECTS/Dashboard"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/TECHNOBOOST_PROJECTS/Dashboard&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -65,7 +64,31 @@
       <option name="presentableId" value="Default" />
       <updated>1767010936695</updated>
     </task>
+    <task id="LOCAL-00001" summary="added router to navigate">
+      <option name="closed" value="true" />
+      <created>1767337087230</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1767337087230</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added router to navigate" />
+    <option name="LAST_COMMIT_MESSAGE" value="added router to navigate" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
