@@ -3,7 +3,7 @@ import logo from "../assets/react.svg";
 // import hamburger from "./assets/hamburger.svg";
 
 export default function Navbar() {
-    const navList = ["Tabels", "Stocks", "Sales"];
+    const navList = ["Sales", "Stocks"];
 
     return (
         <nav className="px-5 py-2 backdrop-blur-xl flex justify-between items-center px-6 py-3 bg-white border-b border-white/10">
@@ -12,7 +12,7 @@ export default function Navbar() {
                 {navList.map((item, i) => (
                     <Link
                         key={i}
-                        to={item === "Tabels" ? "/Home" : item === "Stocks" ? "/Stocks" : `/${item}`}
+                        to={item === "Sales" ? "/" : item === "Stocks" ? "/Stocks" : `/${item}`}
                         onClick={() => setMenuOpen(false)} className="text-black text-lg hover:text-blue-600" // close menu on click
                     >
                         {item}

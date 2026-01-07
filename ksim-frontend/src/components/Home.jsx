@@ -152,7 +152,11 @@ function Home() {
                 />
 
                 {/* KPI Cards */}
-                <div className="kpi-grid">
+                <div className=" w-full grid grid-cols-4 gap-4 mb-6">
+                    <KpiCard label="Bill Count" value={`${(totalBills / 1000).toFixed(1)} K`} change={0} />
+                    <KpiCard label="Revenue" value={`₹${(totalRevenue / 10000000).toFixed(1)} Cr`} change={avgGrowth} />
+                    <KpiCard label="Online Mix" value={`${onlinePercentage}%`} change={0} />
+                    <KpiCard label="Total Quantity" value={`${(totalQty / 1000).toFixed(1)} K`} change={0} />
                     <KpiCard label="Bill Count" value={`${(totalBills / 1000).toFixed(1)} K`} change={0} />
                     <KpiCard label="Revenue" value={`₹${(totalRevenue / 10000000).toFixed(1)} Cr`} change={avgGrowth} />
                     <KpiCard label="Online Mix" value={`${onlinePercentage}%`} change={0} />

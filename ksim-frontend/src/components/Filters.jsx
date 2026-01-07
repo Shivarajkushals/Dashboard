@@ -46,74 +46,144 @@ const Filters = ({ filters, setFilters, stores = [], TranTypes = [], ShopType = 
 
   return (
     <div className="mb-5">
-      <div className="filters-container">
-        <div className="filter-group">
-          <label className="filter-label">From Date</label>
-          <input
-            type="date"
-            min="2022-04-01"
-            max={getYesterday()}
-            value={localFilters.fromDate}
-            onChange={(e) => handleFilterChange('fromDate', e.target.value)}
-            onKeyPress={handleKeyPress}
-          />
-        </div>
+      <div className="filters-container w-full">
+        <div className="grid grid-cols-5 gap-4 w-full">
+          <div className="filter-group">
+            <label className="filter-label">From Date</label>
+            <input
+              type="date"
+              min="2022-04-01"
+              max={getYesterday()}
+              value={localFilters.fromDate}
+              onChange={(e) => handleFilterChange('fromDate', e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+          </div>
 
-        <div className="filter-group">
-          <label className="filter-label">To Date</label>
-          <input
-            type="date"
-            min="2022-04-01"
-            max={getYesterday()}
-            value={localFilters.toDate}
-            onChange={(e) => handleFilterChange('toDate', e.target.value)}
-            onKeyPress={handleKeyPress}
-          />
-        </div>
+          <div className="filter-group">
+            <label className="filter-label">To Date</label>
+            <input
+              type="date"
+              min="2022-04-01"
+              max={getYesterday()}
+              value={localFilters.toDate}
+              onChange={(e) => handleFilterChange('toDate', e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+          </div>
 
-        <div className="filter-group">
-          <label className="filter-label">Store</label>
-          <select
-            value={localFilters.store}
-            onChange={(e) => handleFilterChange('store', e.target.value)}
-          >
-            <option value="">All Stores</option>
-            {stores.map((s, index) => (
-              <option key={index} value={s.store}>
-                {s.store}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="filter-group">
+            <label className="filter-label">Store</label>
+            <select
+              value={localFilters.store}
+              onChange={(e) => handleFilterChange('store', e.target.value)}
+            >
+              <option value="">All Stores</option>
+              {stores.map((s, index) => (
+                <option key={index} value={s.store}>
+                  {s.store}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="filter-group">
-          <label className="filter-label">Shop Type</label>
-          <select
-            value={localFilters.ShopType}
-            onChange={(e) => handleFilterChange('ShopType', e.target.value)}
-          >
-            <option value="">All Shop Types</option>
-            {ShopType.map((s, index) => (
-              <option key={index} value={s.shop_type}>
-                {s.shop_type}
-              </option>
-            ))}
-          </select>
-        </div>
+          <div className="filter-group">
+            <label className="filter-label">Shop Type</label>
+            <select
+              value={localFilters.ShopType}
+              onChange={(e) => handleFilterChange('ShopType', e.target.value)}
+            >
+              <option value="">All Shop Types</option>
+              {ShopType.map((s, index) => (
+                <option key={index} value={s.shop_type}>
+                  {s.shop_type}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        <div className="filter-group">
-          <label className="filter-label">Transaction Type</label>
-          <select
-            value={localFilters.TranType}
-            onChange={(e) => handleFilterChange('TranType', e.target.value)}
-          >
-            <option value="">All Transaction Types</option>
-            {TranTypes.map((s, index) => (
-              <option key={index} value={s.tran_type}>
-                {s.tran_type}
-              </option>
-            ))}
-          </select>
+          <div className="filter-group">
+            <label className="filter-label">Transaction Type</label>
+            <select
+              value={localFilters.TranType}
+              onChange={(e) => handleFilterChange('TranType', e.target.value)}
+            >
+              <option value="">All Transaction Types</option>
+              {TranTypes.map((s, index) => (
+                <option key={index} value={s.tran_type}>
+                  {s.tran_type}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="filter-group">
+            <label className="filter-label">From Date</label>
+            <input
+              type="date"
+              min="2022-04-01"
+              max={getYesterday()}
+              value={localFilters.fromDate}
+              onChange={(e) => handleFilterChange('fromDate', e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+          </div>
+
+          <div className="filter-group">
+            <label className="filter-label">To Date</label>
+            <input
+              type="date"
+              min="2022-04-01"
+              max={getYesterday()}
+              value={localFilters.toDate}
+              onChange={(e) => handleFilterChange('toDate', e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+          </div>
+
+          <div className="filter-group">
+            <label className="filter-label">Store</label>
+            <select
+              value={localFilters.store}
+              onChange={(e) => handleFilterChange('store', e.target.value)}
+            >
+              <option value="">All Stores</option>
+              {stores.map((s, index) => (
+                <option key={index} value={s.store}>
+                  {s.store}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <label className="filter-label">Shop Type</label>
+            <select
+              value={localFilters.ShopType}
+              onChange={(e) => handleFilterChange('ShopType', e.target.value)}
+            >
+              <option value="">All Shop Types</option>
+              {ShopType.map((s, index) => (
+                <option key={index} value={s.shop_type}>
+                  {s.shop_type}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="filter-group">
+            <label className="filter-label">Transaction Type</label>
+            <select
+              value={localFilters.TranType}
+              onChange={(e) => handleFilterChange('TranType', e.target.value)}
+            >
+              <option value="">All Transaction Types</option>
+              {TranTypes.map((s, index) => (
+                <option key={index} value={s.tran_type}>
+                  {s.tran_type}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {/* Action Buttons */}
